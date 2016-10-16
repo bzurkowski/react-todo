@@ -1,14 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router'
+
+import Nav from '../components/layout/Nav'
 
 export default class Layout extends React.Component {
   render() {
     return (
       <div>
-        <h1>This is so cool!</h1>
-        {this.props.children}
-        <Link to="todos">Todos</Link>
-        <Link to="settings">Settings</Link>
+        <Nav/>
+
+        <div class="container">
+          <div class="col-md-6 col-md-offset-3">
+            {this.props.children}
+          </div>
+        </div>
       </div>
     );
   }
