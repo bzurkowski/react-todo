@@ -26,8 +26,10 @@ export default class Todos extends React.Component {
   }
 
   createTodo() {
-    const title = document.getElementById("todo-input").value;
-    TodoActions.createTodo(title);
+    const input = this.todoInput;
+    if (input.value === "") return;
+    TodoActions.createTodo(input.value);
+    input.value = "";
   }
 
   render() {
@@ -46,7 +48,7 @@ export default class Todos extends React.Component {
       <div>
         <div class="row">
           <div class="input-group">
-            <input type="text" id="todo-input" class="form-control" placeholder="What needs to be done?"/>
+            <input ref={(ref) => this.todoInput = ref } type="text" class="form-control" placeholder="What needs to be done?"/>
             <span class="input-group-btn">
               <button class="btn btn-default" type="button" onClick={this.createTodo.bind(this)}>Add</button>
             </span>
