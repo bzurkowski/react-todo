@@ -66,7 +66,7 @@ class TodoStore extends EventEmitter {
   createTodo(title) {
     const id = Date.now();
 
-    this.todos.push(
+    this.todos.unshift(
       {
         id,
         title,
@@ -84,13 +84,11 @@ class TodoStore extends EventEmitter {
         this.createTodo(action.title);
       }
     }
-    console.log("Received action!", action);
   }
 }
 
 const todoStore = new TodoStore;
 
 dispatcher.register(todoStore.handleActions.bind(todoStore));
-window.dispatcher = dispatcher;
 
 export default todoStore;
