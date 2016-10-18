@@ -21,6 +21,10 @@ export default class Todos extends React.Component {
     });
   }
 
+  componentWillUnmount() {
+    TodoStore.removeListener("change", this.getTodos);
+  }
+
   createTodo() {
     const title = document.getElementById("todo-input").value;
     TodoActions.createTodo(title);
